@@ -1,0 +1,32 @@
+import time
+
+def calculate_typing_speed(start_time, end_time, typed_words):
+    elapsed_time = end_time - start_time
+    minutes = elapsed_time / 60.0
+    words_per_minute = len(typed_words) / minutes
+    return words_per_minute
+
+def main():
+    print("Welcome to the Typing Speed Calculator!")
+    input("Type the following words and press Enter to start:\n'Programming is fun and challenging.'\n")
+
+    start_time = time.time()
+
+    target_text = "Programming is fun and challenging."
+    typed_text = input("Type the above sentence: ")
+
+    end_time = time.time()
+
+    typed_words = typed_text.split()
+    target_words = target_text.split()
+
+    correct_words = sum(w1 == w2 for w1, w2 in zip(typed_words, target_words))
+
+    accuracy = (correct_words / len(target_words)) * 100
+    speed = calculate_typing_speed(start_time, end_time, typed_words)
+
+    print(f"\nYour Typing Speed: {speed:.2f} WPM")
+    print(f"Accuracy: {accuracy:.2f}%")
+
+if __name__ == "__main__":
+    main()
